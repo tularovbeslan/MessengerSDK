@@ -7,33 +7,24 @@
 //
 
 import UIKit
+import PinLayout
+import Fakery
 
 open class MessengerView: UIView {
 	
-	let numberOfItems = 50
-	var randomCellStyle: CellStyle { return arc4random_uniform(10) % 2 == 0 ? .blue : .gray }
+	let fakeText = Faker()
 	
-	lazy var style: [CellStyle] = { (0..<self.numberOfItems).map { _ in self.randomCellStyle } }()
-	lazy var topOffset: [CGFloat] = { (0..<self.numberOfItems).map { _ in CGFloat(arc4random_uniform(250)) } }()
+	var dummyArray: [String] = []
 	
-	var insets: UIEdgeInsets {
-		return UIEdgeInsets(top: 200, left: 0, bottom: 200, right: 0)
-	}
-	
-	var additionalInsets: UIEdgeInsets {
-		return UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
-	}
-	
-	public lazy var layout = BouncyLayout(style: .default)
+	fileprivate let dummyItem = MessengerViewCell()
+
+	public lazy var layout = BouncyLayout(style: .off)
 	
 	public lazy var collectionView: UICollectionView = {
 		
-		
 		let view = UICollectionView(frame: .zero, collectionViewLayout: self.layout)
-		view.translatesAutoresizingMaskIntoConstraints = false
-		view.backgroundColor = UIColor.red
-		view.showsVerticalScrollIndicator = false
-		view.showsHorizontalScrollIndicator = false
+		view.backgroundColor = UIColor(red:19/255.0, green:26/255.0, blue:34/255.0, alpha: 1)
+		view.contentInset = UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
 		view.delegate = self
 		view.dataSource = self
 		view.register(MessengerViewCell.self, forCellWithReuseIdentifier: String(describing: MessengerViewCell.self))
@@ -43,16 +34,23 @@ open class MessengerView: UIView {
 	
 	public init() {
 		super.init(frame: CGRect.zero)
-		setupView()
+		
+		for _ in 0..<100 {
+			dummyArray.append(arc4random() % 2 == 0 ? fakeText.lorem.sentences() : fakeText.lorem.sentence())
+		}
+		
+		self.addSubview(collectionView)
 	}
 	
 	public override init(frame: CGRect) {
 		super.init(frame: frame)
-		setupView()
+
+		self.addSubview(collectionView)
 	}
 	
 	public required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
+		
 	}
 	
 	open override func layoutSubviews() {
@@ -61,44 +59,33 @@ open class MessengerView: UIView {
 	}
 	
 	fileprivate func setupView() {
-		
-		self.backgroundColor = .white
-		self.clipsToBounds = true
-		
-		collectionView.contentInset = UIEdgeInsets(top: insets.top + additionalInsets.top, left: insets.left + additionalInsets.left, bottom: insets.bottom + additionalInsets.bottom, right: insets.right + additionalInsets.right)
-		collectionView.scrollIndicatorInsets = UIEdgeInsets(top: insets.top, left: insets.left, bottom: insets.bottom, right: insets.right)
-		self.addSubview(collectionView)
-		
-		NSLayoutConstraint.activate([
-			collectionView.topAnchor.constraint(equalTo: self.topAnchor, constant: -insets.top),
-			collectionView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: -insets.left),
-			collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: insets.bottom),
-			collectionView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: insets.right)
-			])
-	
+		self.backgroundColor = UIColor(red:19/255.0, green:26/255.0, blue:34/255.0, alpha: 1)
+		collectionView.pin.vertically().horizontally(pin.safeArea)
 	}
 }
 
 extension MessengerView: UICollectionViewDataSource {
 	
 	open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return numberOfItems
+		return 100
 	}
 	
 	open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		return collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: MessengerViewCell.self), for: indexPath)
-	}
-	
-	open func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-		guard let cell = cell as? MessengerViewCell else { return }
-		cell.setCell(style: style[indexPath.row])
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: MessengerViewCell.self), for: indexPath) as! MessengerViewCell
+		cell.setup(text: dummyArray[indexPath.row])
+		return cell
 	}
 }
 
 extension MessengerView: UICollectionViewDelegateFlowLayout {
 	
 	open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		return CGSize(width: UIScreen.main.bounds.width, height: 150)
+
+		dummyItem.setup(text: dummyArray[indexPath.row])
+		let height: CGFloat = .greatestFiniteMagnitude
+		let width: CGFloat = collectionView.frame.width
+		let size = dummyItem.sizeThatFits(CGSize(width: width, height: height))
+		return size
 	}
 	
 	open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

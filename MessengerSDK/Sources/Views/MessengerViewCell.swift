@@ -7,29 +7,58 @@
 //
 
 import UIKit
-import PinLayout
+import FlexLayout
 
 class MessengerViewCell: UICollectionViewCell {
 	
-	func setCell(style: CellStyle) {
-		
-		background.backgroundColor = style.color()
-		let insets = UIEdgeInsets(top: 5, left: style == .blue ? 80 : 5, bottom: 5, right: style == .blue ? 5 : 80)
-
-		
-		background.pin
-			.top(insets.top)
-			.bottom(insets.bottom)
-			.left(insets.left)
-			.right(insets.right)
+	open var isIncoming: Bool = false {
+		didSet {
+			
+		}
 	}
 	
-	lazy var background: UIView = {
+	func setup(text: String) {
 		
-		let view = UIView()
-		view.translatesAutoresizingMaskIntoConstraints = false
-		view.layer.cornerRadius = 15
-		view.clipsToBounds = true
+		textLabel.text = text
+		textLabel.flex.markDirty()
+		setNeedsLayout()
+	}
+	
+	lazy var textLabel: UILabel = {
+		
+		let view = UILabel()
+		view.font = UIFont.systemFont(ofSize: 17)
+		view.textColor = .white
+		view.numberOfLines = 0
+		return view
+	}()
+	
+	lazy var dateLabel: UILabel = {
+		
+		let view = UILabel()
+		view.text = "11:55 AM"
+		view.font = UIFont.systemFont(ofSize: 11)
+		view.textColor = UIColor(red:143/255.0,
+								 green:180/255.0,
+								 blue:206/255.0, alpha: 1)
+		return view
+	}()
+	
+	lazy var leftBubbleImage: UIImage = {
+		let image = UIImage(named: "left_tail_bubble")!
+		return image
+	}()
+	
+	lazy var rightBubbleImage: UIImage = {
+		let image = UIImage(named: "right_tail_bubble")!
+		return image
+	}()
+	
+	lazy var bubbleContent: BubbleContent = {
+		
+		let view = BubbleContent()
+		view.tintColor = CellStyle.light.color()
+		view.image = leftBubbleImage
 		return view
 	}()
 	
@@ -40,23 +69,59 @@ class MessengerViewCell: UICollectionViewCell {
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		
-		contentView.backgroundColor = nil
-		contentView.addSubview(background)
+		setupFlexLayout()
+	}
+	
+	override func layoutSubviews() {
+		super.layoutSubviews()
+		layout()
+	}
+	
+	override func sizeThatFits(_ size: CGSize) -> CGSize {
+		contentView.pin.width(size.width)
+		layout()
+		return contentView.frame.size
+	}
+	
+	private func layout() {
+		contentView.flex.layout(mode: .adjustHeight)
+	}
+	
+	private func setupFlexLayout() {
+		
+		contentView.flex.define { (flex) in
+			
+			flex.addItem(bubbleContent)
+				.margin(2, 4, 2, 4)
+				.direction(.column)
+				.alignSelf(.start)
+				.maxWidth(90%)
+				.define({ (flex) in
+					
+					flex.addItem(textLabel)
+						.margin(8, 18, 8, 18)
+						.alignSelf(.start)
+					
+					flex.addItem(dateLabel)
+						.alignSelf(.end)
+						.margin(0, 5, 8, 18)
+				})
+		}
 	}
 }
 
 enum CellStyle {
 	
-	case blue
-	case gray
+	case light
+	case dark
 	
 	func color() -> UIColor {
 		
 		switch self {
-		case .blue:
-			return UIColor.white.withAlphaComponent(1)
-		case .gray:
-			return UIColor.white.withAlphaComponent(0.7)
+		case .light:
+			return UIColor(red:45/255.0, green:87/255.0, blue:130/255.0, alpha: 1)
+		case .dark:
+			return UIColor(red:23/255.0, green:36/255.0, blue:49/255.0, alpha: 1)
 		}
 	}
 }

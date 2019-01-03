@@ -6,4 +6,5 @@ target 'MessengerSDK' do
 	pod 'FlexLayout'
 	pod 'PinLayout'
 	pod 'RealmSwift'
+	pod 'Fakery'
 end

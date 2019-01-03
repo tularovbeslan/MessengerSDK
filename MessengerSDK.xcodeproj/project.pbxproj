@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5733B6DE21D12B05003F7AE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5733B6DD21D12B05003F7AE2 /* AppDelegate.swift */; };
-		5733B6E321D12B05003F7AE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5733B6E121D12B05003F7AE2 /* Main.storyboard */; };
-		5733B6E521D12B08003F7AE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5733B6E421D12B08003F7AE2 /* Assets.xcassets */; };
 		5733B6E821D12B08003F7AE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5733B6E621D12B08003F7AE2 /* LaunchScreen.storyboard */; };
 		5733B6F321D12B08003F7AE2 /* MessengerSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5733B6F221D12B08003F7AE2 /* MessengerSDKTests.swift */; };
 		5733B6FE21D12B09003F7AE2 /* MessengerSDKUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5733B6FD21D12B09003F7AE2 /* MessengerSDKUITests.swift */; };
@@ -18,6 +16,8 @@
 		5733B71421D2EF8B003F7AE2 /* MessengerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5733B71321D2EF8B003F7AE2 /* MessengerViewCell.swift */; };
 		5733B71721D2F145003F7AE2 /* BouncyLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5733B71621D2F145003F7AE2 /* BouncyLayout.swift */; };
 		5733B72521D50F13003F7AE2 /* MessengerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5733B72421D50F13003F7AE2 /* MessengerViewController.swift */; };
+		5752F5BD21DCD88E008AA9D2 /* BubbleContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5752F5BC21DCD88E008AA9D2 /* BubbleContent.swift */; };
+		57775BF621DD8F5E0003B9E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57775BF521DD8F5E0003B9E1 /* Assets.xcassets */; };
 		802F240E008D1EA2322996AA /* Pods_MessengerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F563B9B800D73425EC0C457 /* Pods_MessengerSDK.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,8 +41,6 @@
 /* Begin PBXFileReference section */
 		5733B6DA21D12B05003F7AE2 /* MessengerSDK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessengerSDK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5733B6DD21D12B05003F7AE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5733B6E221D12B05003F7AE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		5733B6E421D12B08003F7AE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5733B6E721D12B08003F7AE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5733B6E921D12B08003F7AE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5733B6EE21D12B08003F7AE2 /* MessengerSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessengerSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +54,8 @@
 		5733B71321D2EF8B003F7AE2 /* MessengerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerViewCell.swift; sourceTree = "<group>"; };
 		5733B71621D2F145003F7AE2 /* BouncyLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BouncyLayout.swift; sourceTree = "<group>"; };
 		5733B72421D50F13003F7AE2 /* MessengerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerViewController.swift; sourceTree = "<group>"; };
+		5752F5BC21DCD88E008AA9D2 /* BubbleContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleContent.swift; sourceTree = "<group>"; };
+		57775BF521DD8F5E0003B9E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F563B9B800D73425EC0C457 /* Pods_MessengerSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MessengerSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9848624E1E4E812417F67E24 /* Pods-MessengerSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MessengerSDK.debug.xcconfig"; path = "Target Support Files/Pods-MessengerSDK/Pods-MessengerSDK.debug.xcconfig"; sourceTree = "<group>"; };
 		EEE454327A51DC74CD1BB855 /* Pods-MessengerSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MessengerSDK.release.xcconfig"; path = "Target Support Files/Pods-MessengerSDK/Pods-MessengerSDK.release.xcconfig"; sourceTree = "<group>"; };
@@ -122,8 +122,7 @@
 			children = (
 				5733B72321D50EE0003F7AE2 /* Sources */,
 				5733B6DD21D12B05003F7AE2 /* AppDelegate.swift */,
-				5733B6E121D12B05003F7AE2 /* Main.storyboard */,
-				5733B6E421D12B08003F7AE2 /* Assets.xcassets */,
+				57775BF521DD8F5E0003B9E1 /* Assets.xcassets */,
 				5733B6E621D12B08003F7AE2 /* LaunchScreen.storyboard */,
 				5733B6E921D12B08003F7AE2 /* Info.plist */,
 			);
@@ -154,6 +153,7 @@
 				5733B70F21D12BD9003F7AE2 /* MessengerView.swift */,
 				5733B71321D2EF8B003F7AE2 /* MessengerViewCell.swift */,
 				5733B71121D12C4E003F7AE2 /* InputBarView.swift */,
+				5752F5BC21DCD88E008AA9D2 /* BubbleContent.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -315,9 +315,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57775BF621DD8F5E0003B9E1 /* Assets.xcassets in Resources */,
 				5733B6E821D12B08003F7AE2 /* LaunchScreen.storyboard in Resources */,
-				5733B6E521D12B08003F7AE2 /* Assets.xcassets in Resources */,
-				5733B6E321D12B05003F7AE2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +346,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MessengerSDK/Pods-MessengerSDK-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Fakery/Fakery.framework",
 				"${BUILT_PRODUCTS_DIR}/FlexLayout/FlexLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/PinLayout/PinLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
@@ -356,6 +356,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fakery.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlexLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PinLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
@@ -401,6 +402,7 @@
 				5733B71721D2F145003F7AE2 /* BouncyLayout.swift in Sources */,
 				5733B71421D2EF8B003F7AE2 /* MessengerViewCell.swift in Sources */,
 				5733B6DE21D12B05003F7AE2 /* AppDelegate.swift in Sources */,
+				5752F5BD21DCD88E008AA9D2 /* BubbleContent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,14 +438,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		5733B6E121D12B05003F7AE2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5733B6E221D12B05003F7AE2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		5733B6E621D12B08003F7AE2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
