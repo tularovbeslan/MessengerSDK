@@ -18,6 +18,8 @@
 		5733B72521D50F13003F7AE2 /* MessengerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5733B72421D50F13003F7AE2 /* MessengerViewController.swift */; };
 		5752F5BD21DCD88E008AA9D2 /* BubbleContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5752F5BC21DCD88E008AA9D2 /* BubbleContent.swift */; };
 		57775BF621DD8F5E0003B9E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57775BF521DD8F5E0003B9E1 /* Assets.xcassets */; };
+		57775BFC21DE21AF0003B9E1 /* MessageSent.caf in Resources */ = {isa = PBXBuildFile; fileRef = 57775BFA21DE21AF0003B9E1 /* MessageSent.caf */; };
+		57775BFD21DE21AF0003B9E1 /* Notification.caf in Resources */ = {isa = PBXBuildFile; fileRef = 57775BFB21DE21AF0003B9E1 /* Notification.caf */; };
 		802F240E008D1EA2322996AA /* Pods_MessengerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F563B9B800D73425EC0C457 /* Pods_MessengerSDK.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +58,8 @@
 		5733B72421D50F13003F7AE2 /* MessengerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerViewController.swift; sourceTree = "<group>"; };
 		5752F5BC21DCD88E008AA9D2 /* BubbleContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleContent.swift; sourceTree = "<group>"; };
 		57775BF521DD8F5E0003B9E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		57775BFA21DE21AF0003B9E1 /* MessageSent.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MessageSent.caf; sourceTree = "<group>"; };
+		57775BFB21DE21AF0003B9E1 /* Notification.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Notification.caf; sourceTree = "<group>"; };
 		7F563B9B800D73425EC0C457 /* Pods_MessengerSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MessengerSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9848624E1E4E812417F67E24 /* Pods-MessengerSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MessengerSDK.debug.xcconfig"; path = "Target Support Files/Pods-MessengerSDK/Pods-MessengerSDK.debug.xcconfig"; sourceTree = "<group>"; };
 		EEE454327A51DC74CD1BB855 /* Pods-MessengerSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MessengerSDK.release.xcconfig"; path = "Target Support Files/Pods-MessengerSDK/Pods-MessengerSDK.release.xcconfig"; sourceTree = "<group>"; };
@@ -120,11 +124,10 @@
 		5733B6DC21D12B05003F7AE2 /* MessengerSDK */ = {
 			isa = PBXGroup;
 			children = (
+				57775BF821DE20C50003B9E1 /* Supporting Files */,
+				57775BF721DE20B20003B9E1 /* Resources */,
 				5733B72321D50EE0003F7AE2 /* Sources */,
 				5733B6DD21D12B05003F7AE2 /* AppDelegate.swift */,
-				57775BF521DD8F5E0003B9E1 /* Assets.xcassets */,
-				5733B6E621D12B08003F7AE2 /* LaunchScreen.storyboard */,
-				5733B6E921D12B08003F7AE2 /* Info.plist */,
 			);
 			path = MessengerSDK;
 			sourceTree = "<group>";
@@ -198,6 +201,33 @@
 				5733B70B21D12B40003F7AE2 /* Views */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		57775BF721DE20B20003B9E1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				57775BF921DE21580003B9E1 /* Sounds */,
+				57775BF521DD8F5E0003B9E1 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		57775BF821DE20C50003B9E1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5733B6E921D12B08003F7AE2 /* Info.plist */,
+				5733B6E621D12B08003F7AE2 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		57775BF921DE21580003B9E1 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				57775BFA21DE21AF0003B9E1 /* MessageSent.caf */,
+				57775BFB21DE21AF0003B9E1 /* Notification.caf */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		CBAEBABA97C4B62DC3C6F4E8 /* Pods */ = {
@@ -317,6 +347,8 @@
 			files = (
 				57775BF621DD8F5E0003B9E1 /* Assets.xcassets in Resources */,
 				5733B6E821D12B08003F7AE2 /* LaunchScreen.storyboard in Resources */,
+				57775BFC21DE21AF0003B9E1 /* MessageSent.caf in Resources */,
+				57775BFD21DE21AF0003B9E1 /* Notification.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,7 +604,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MTVD7A69KL;
-				INFOPLIST_FILE = MessengerSDK/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/MessengerSDK/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -592,7 +624,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MTVD7A69KL;
-				INFOPLIST_FILE = MessengerSDK/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/MessengerSDK/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
