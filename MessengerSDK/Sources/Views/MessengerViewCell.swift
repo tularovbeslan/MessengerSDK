@@ -13,14 +13,26 @@ class MessengerViewCell: UICollectionViewCell {
 	
 	open var isIncoming: Bool = false {
 		didSet {
-			
+			bubbleContent.tintColor = isIncoming ? CellStyle.dark.color() :CellStyle.light.color()
 		}
 	}
 	
-	func setup(text: String) {
+	func setup(message: Message) {
 		
-		textLabel.text = text
+		isIncoming = message.isIncomming
+		
+		textLabel.text = message.text
 		textLabel.flex.markDirty()
+		
+		dateLabel.text = Date.time(date: message.date)
+		dateLabel.flex.markDirty()
+		
+		bubbleContent.flex.alignSelf(isIncoming ? .start : .end)
+		bubbleContent.image = isIncoming ? leftBubbleImage : rightBubbleImage
+		bubbleContent.flex.margin(2, isIncoming ? 34 : 4, 2, 4)
+		
+		avatar.flex.width(isIncoming ? 30 : 0)
+
 		setNeedsLayout()
 	}
 	
@@ -36,7 +48,6 @@ class MessengerViewCell: UICollectionViewCell {
 	lazy var dateLabel: UILabel = {
 		
 		let view = UILabel()
-		view.text = "11:55 AM"
 		view.font = UIFont.systemFont(ofSize: 11)
 		view.textColor = UIColor(red:143/255.0,
 								 green:180/255.0,
@@ -44,12 +55,27 @@ class MessengerViewCell: UICollectionViewCell {
 		return view
 	}()
 	
+	lazy var avatar: UIImageView = {
+		
+		let image = UIImage(named: "avatar")!
+		let view = UIImageView()
+		view.layer.cornerRadius = 15
+		view.clipsToBounds = true
+		view.image = image
+//		view.clearsContextBeforeDrawing = false
+//		view.layer.allowsGroupOpacity = false
+//		view.layer.drawsAsynchronously = true
+		return view
+	}()
+	
 	lazy var leftBubbleImage: UIImage = {
+		
 		let image = UIImage(named: "left_tail_bubble")!
 		return image
 	}()
 	
 	lazy var rightBubbleImage: UIImage = {
+		
 		let image = UIImage(named: "right_tail_bubble")!
 		return image
 	}()
@@ -57,8 +83,9 @@ class MessengerViewCell: UICollectionViewCell {
 	lazy var bubbleContent: BubbleContent = {
 		
 		let view = BubbleContent()
-		view.tintColor = CellStyle.light.color()
-		view.image = leftBubbleImage
+//		view.clearsContextBeforeDrawing = false
+//		view.layer.allowsGroupOpacity = false
+//		view.layer.drawsAsynchronously = true
 		return view
 	}()
 	
@@ -78,6 +105,7 @@ class MessengerViewCell: UICollectionViewCell {
 	}
 	
 	override func sizeThatFits(_ size: CGSize) -> CGSize {
+		
 		contentView.pin.width(size.width)
 		layout()
 		return contentView.frame.size
@@ -92,20 +120,22 @@ class MessengerViewCell: UICollectionViewCell {
 		contentView.flex.define { (flex) in
 			
 			flex.addItem(bubbleContent)
-				.margin(2, 4, 2, 4)
-				.direction(.column)
-				.alignSelf(.start)
-				.maxWidth(90%)
+				.direction(.row)
+				.maxWidth(80%)
 				.define({ (flex) in
 					
 					flex.addItem(textLabel)
 						.margin(8, 18, 8, 18)
 						.alignSelf(.start)
-					
+						.shrink(1)
+
 					flex.addItem(dateLabel)
 						.alignSelf(.end)
 						.margin(0, 5, 8, 18)
-				})
+			})
+			
+			flex.addItem(avatar)
+				.position(.absolute).bottom(2).left(4).size(30)
 		}
 	}
 }

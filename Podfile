@@ -7,4 +7,5 @@ target 'MessengerSDK' do
 	pod 'PinLayout'
 	pod 'RealmSwift'
 	pod 'Fakery'
+	pod 'FPSCounter', '~> 3.0'
 end

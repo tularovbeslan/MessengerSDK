@@ -14,12 +14,16 @@
 		5733B71021D12BD9003F7AE2 /* MessengerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5733B70F21D12BD9003F7AE2 /* MessengerView.swift */; };
 		5733B71221D12C4E003F7AE2 /* InputBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5733B71121D12C4E003F7AE2 /* InputBarView.swift */; };
 		5733B71421D2EF8B003F7AE2 /* MessengerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5733B71321D2EF8B003F7AE2 /* MessengerViewCell.swift */; };
-		5733B71721D2F145003F7AE2 /* BouncyLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5733B71621D2F145003F7AE2 /* BouncyLayout.swift */; };
 		5733B72521D50F13003F7AE2 /* MessengerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5733B72421D50F13003F7AE2 /* MessengerViewController.swift */; };
 		5752F5BD21DCD88E008AA9D2 /* BubbleContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5752F5BC21DCD88E008AA9D2 /* BubbleContent.swift */; };
 		57775BF621DD8F5E0003B9E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57775BF521DD8F5E0003B9E1 /* Assets.xcassets */; };
 		57775BFC21DE21AF0003B9E1 /* MessageSent.caf in Resources */ = {isa = PBXBuildFile; fileRef = 57775BFA21DE21AF0003B9E1 /* MessageSent.caf */; };
 		57775BFD21DE21AF0003B9E1 /* Notification.caf in Resources */ = {isa = PBXBuildFile; fileRef = 57775BFB21DE21AF0003B9E1 /* Notification.caf */; };
+		57775BFF21DE3E910003B9E1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57775BFE21DE3E910003B9E1 /* Message.swift */; };
+		57775C0121DE48DC0003B9E1 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57775C0021DE48DC0003B9E1 /* SectionHeader.swift */; };
+		57775C0321DFDA120003B9E1 /* StickyHeaderLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57775C0221DFDA110003B9E1 /* StickyHeaderLayout.swift */; };
+		57775C0521E00AB20003B9E1 /* rightTailBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57775C0421E00AB20003B9E1 /* rightTailBubble.swift */; };
+		57775C0721E019760003B9E1 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57775C0621E019760003B9E1 /* DateExtension.swift */; };
 		802F240E008D1EA2322996AA /* Pods_MessengerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F563B9B800D73425EC0C457 /* Pods_MessengerSDK.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,12 +58,16 @@
 		5733B70F21D12BD9003F7AE2 /* MessengerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerView.swift; sourceTree = "<group>"; };
 		5733B71121D12C4E003F7AE2 /* InputBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBarView.swift; sourceTree = "<group>"; };
 		5733B71321D2EF8B003F7AE2 /* MessengerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerViewCell.swift; sourceTree = "<group>"; };
-		5733B71621D2F145003F7AE2 /* BouncyLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BouncyLayout.swift; sourceTree = "<group>"; };
 		5733B72421D50F13003F7AE2 /* MessengerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerViewController.swift; sourceTree = "<group>"; };
 		5752F5BC21DCD88E008AA9D2 /* BubbleContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleContent.swift; sourceTree = "<group>"; };
 		57775BF521DD8F5E0003B9E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57775BFA21DE21AF0003B9E1 /* MessageSent.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MessageSent.caf; sourceTree = "<group>"; };
 		57775BFB21DE21AF0003B9E1 /* Notification.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Notification.caf; sourceTree = "<group>"; };
+		57775BFE21DE3E910003B9E1 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		57775C0021DE48DC0003B9E1 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
+		57775C0221DFDA110003B9E1 /* StickyHeaderLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyHeaderLayout.swift; sourceTree = "<group>"; };
+		57775C0421E00AB20003B9E1 /* rightTailBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rightTailBubble.swift; sourceTree = "<group>"; };
+		57775C0621E019760003B9E1 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		7F563B9B800D73425EC0C457 /* Pods_MessengerSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MessengerSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9848624E1E4E812417F67E24 /* Pods-MessengerSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MessengerSDK.debug.xcconfig"; path = "Target Support Files/Pods-MessengerSDK/Pods-MessengerSDK.debug.xcconfig"; sourceTree = "<group>"; };
 		EEE454327A51DC74CD1BB855 /* Pods-MessengerSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MessengerSDK.release.xcconfig"; path = "Target Support Files/Pods-MessengerSDK/Pods-MessengerSDK.release.xcconfig"; sourceTree = "<group>"; };
@@ -155,8 +163,10 @@
 			children = (
 				5733B70F21D12BD9003F7AE2 /* MessengerView.swift */,
 				5733B71321D2EF8B003F7AE2 /* MessengerViewCell.swift */,
+				57775C0021DE48DC0003B9E1 /* SectionHeader.swift */,
 				5733B71121D12C4E003F7AE2 /* InputBarView.swift */,
 				5752F5BC21DCD88E008AA9D2 /* BubbleContent.swift */,
+				57775C0421E00AB20003B9E1 /* rightTailBubble.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -164,6 +174,7 @@
 		5733B70C21D12B59003F7AE2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				57775BFE21DE3E910003B9E1 /* Message.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -179,6 +190,7 @@
 		5733B70E21D12B72003F7AE2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				57775C0621E019760003B9E1 /* DateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -186,7 +198,7 @@
 		5733B71521D2F0ED003F7AE2 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
-				5733B71621D2F145003F7AE2 /* BouncyLayout.swift */,
+				57775C0221DFDA110003B9E1 /* StickyHeaderLayout.swift */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -378,6 +390,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MessengerSDK/Pods-MessengerSDK-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FPSCounter/FPSCounter.framework",
 				"${BUILT_PRODUCTS_DIR}/Fakery/Fakery.framework",
 				"${BUILT_PRODUCTS_DIR}/FlexLayout/FlexLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/PinLayout/PinLayout.framework",
@@ -388,6 +401,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FPSCounter.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fakery.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlexLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PinLayout.framework",
@@ -429,11 +443,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				5733B72521D50F13003F7AE2 /* MessengerViewController.swift in Sources */,
+				57775C0321DFDA120003B9E1 /* StickyHeaderLayout.swift in Sources */,
 				5733B71021D12BD9003F7AE2 /* MessengerView.swift in Sources */,
 				5733B71221D12C4E003F7AE2 /* InputBarView.swift in Sources */,
-				5733B71721D2F145003F7AE2 /* BouncyLayout.swift in Sources */,
 				5733B71421D2EF8B003F7AE2 /* MessengerViewCell.swift in Sources */,
+				57775C0121DE48DC0003B9E1 /* SectionHeader.swift in Sources */,
+				57775C0721E019760003B9E1 /* DateExtension.swift in Sources */,
+				57775BFF21DE3E910003B9E1 /* Message.swift in Sources */,
 				5733B6DE21D12B05003F7AE2 /* AppDelegate.swift in Sources */,
+				57775C0521E00AB20003B9E1 /* rightTailBubble.swift in Sources */,
 				5752F5BD21DCD88E008AA9D2 /* BubbleContent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

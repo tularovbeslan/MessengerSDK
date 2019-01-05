@@ -1,6 +1,7 @@
 PODS:
   - Fakery (3.4.0)
   - FlexLayout (1.3.11)
+  - FPSCounter (3.0.0)
   - PinLayout (1.8.6)
   - Realm (3.12.0):
     - Realm/Headers (= 3.12.0)
@@ -11,6 +12,7 @@ PODS:
 DEPENDENCIES:
   - Fakery
   - FlexLayout
+  - FPSCounter (~> 3.0)
   - PinLayout
   - RealmSwift
 
@@ -18,6 +20,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Fakery
     - FlexLayout
+    - FPSCounter
     - PinLayout
     - Realm
     - RealmSwift
@@ -25,10 +28,11 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Fakery: 885e894a3e7c392e1da96c6e46a1abe5a0b28686
   FlexLayout: b008184d23aae0c56e1c916e803445a13a6f4e5a
+  FPSCounter: 38f076ebc06a21d71b4e9e178e172ed766233189
   PinLayout: fe2a2432d6982588e208572005c941aeeae417ab
   Realm: cdaef23c4ddb36ab1ddffed23f5a7f3332fc5585
   RealmSwift: 5576324033f0aa5ef1e0a839a3da2281dff47a7f
 
-PODFILE CHECKSUM: 9cdaae092abebbd77f5ee7c131304b9358a61917
+PODFILE CHECKSUM: 1fc9d2b79b3bf12ada8724cb0ab7f39bee44c636
 
 COCOAPODS: 1.6.0.beta.2
