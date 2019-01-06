@@ -62,9 +62,6 @@ class MessengerViewCell: UICollectionViewCell {
 		view.layer.cornerRadius = 15
 		view.clipsToBounds = true
 		view.image = image
-//		view.clearsContextBeforeDrawing = false
-//		view.layer.allowsGroupOpacity = false
-//		view.layer.drawsAsynchronously = true
 		return view
 	}()
 	
@@ -83,9 +80,6 @@ class MessengerViewCell: UICollectionViewCell {
 	lazy var bubbleContent: BubbleContent = {
 		
 		let view = BubbleContent()
-//		view.clearsContextBeforeDrawing = false
-//		view.layer.allowsGroupOpacity = false
-//		view.layer.drawsAsynchronously = true
 		return view
 	}()
 	

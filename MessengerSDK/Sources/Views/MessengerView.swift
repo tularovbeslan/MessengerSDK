@@ -18,8 +18,17 @@ open class MessengerView: UIView {
 	
 	fileprivate let dummyItem = MessengerViewCell()
 	fileprivate let dummyHeader = SectionHeader()
+	fileprivate let rootFlexContainer = UIView()
 
 	public lazy var stickyHeaderLayout = StickyHeaderLayout()
+	
+	lazy var scrollButton: UIButton = {
+		
+		let image = UIImage(named: "scrollToBottom")!
+		let button = UIButton()
+		button.setImage(image, for: .normal)
+		return button
+	}()
 	
 	public lazy var collectionView: UICollectionView = {
 		
@@ -60,7 +69,8 @@ open class MessengerView: UIView {
 		}
 		
 		dummyArray = outer
-		self.addSubview(collectionView)
+		addSubview(rootFlexContainer)
+		setupFlexLayout()
 	}
 	
 	public override init(frame: CGRect) {
@@ -76,12 +86,27 @@ open class MessengerView: UIView {
 	
 	open override func layoutSubviews() {
 		super.layoutSubviews()
-		setupView()
+		layout()
 	}
 	
-	fileprivate func setupView() {
+	private func setupFlexLayout() {
+		
+		rootFlexContainer.flex.define { (flex) in
+			
+			flex.addItem(collectionView).grow(1)
+
+			flex.addItem(scrollButton)
+				.position(.absolute).right(18).bottom(18).size(36)
+
+		}
+	}
+	
+	fileprivate func layout() {
 		self.backgroundColor = UIColor(red:19/255.0, green:26/255.0, blue:34/255.0, alpha: 1)
-		collectionView.pin.vertically().horizontally(pin.safeArea)
+		collectionView.pin.all()
+		
+		rootFlexContainer.pin.all()
+		rootFlexContainer.flex.layout()
 	}
 }
 

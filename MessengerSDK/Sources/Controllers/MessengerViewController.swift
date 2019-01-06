@@ -31,9 +31,6 @@ class MessengerViewController: UIViewController {
 		super.viewDidLayoutSubviews()
 
 		view.flex.addItem(messengerView)
-			.alignSelf(.stretch)
-			.grow(1)
-		
 		messengerView.pin.all()
 	}
 	
