@@ -15,13 +15,14 @@ class SectionHeader: UICollectionReusableView {
 		
 		let view = UILabel()
 		view.font = UIFont.systemFont(ofSize: 15)
-		return view
-	}()
-	
-	lazy var contentView: UIView = {
-		
-		let view = UIView()
-		view.backgroundColor = UIColor(red:19/255.0, green:26/255.0, blue:34/255.0, alpha: 1)
+		view.textAlignment = .center
+		view.textColor = .white
+		view.layer.cornerRadius = 10
+		view.clipsToBounds = true
+		view.backgroundColor = UIColor(red:19/255.0,
+																	 green:26/255.0,
+																	 blue:34/255.0,
+																	 alpha: 1)
 		return view
 	}()
 	
@@ -30,15 +31,10 @@ class SectionHeader: UICollectionReusableView {
 		
 		self.flex.define { (flex) in
 			
-			flex.addItem(contentView)
-				.direction(.row)
-				.padding(2, 2, 2, 2)
-				.alignSelf(.center)
-				.define({ (flex) in
-					flex.addItem(titleLabel)
-						.alignSelf(.center)
-						.margin(2, 4, 2, 4)
-				})
+			flex.addItem(titleLabel)
+					.alignSelf(.center)
+					.height(20)
+					.paddingHorizontal(10)
 		}
 	}
 	
@@ -56,19 +52,19 @@ class SectionHeader: UICollectionReusableView {
 	
 	override func layoutSubviews() {
 		super.layoutSubviews()
+
 		layout()
 	}
 	
 	override func sizeThatFits(_ size: CGSize) -> CGSize {
-		self.pin.width(size.width)
+
 		layout()
+		self.pin.width(size.width)
 		return self.frame.size
 	}
 	
 	private func layout() {
 		self.flex.layout(mode: .adjustHeight)
-		
-		contentView.layer.cornerRadius = contentView.frame.height / 2
 	}
 	
 }

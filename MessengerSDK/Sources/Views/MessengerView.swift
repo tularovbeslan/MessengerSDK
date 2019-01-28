@@ -8,17 +8,13 @@
 
 import UIKit
 import PinLayout
-import Fakery
 
 open class MessengerView: UIView {
 	
-	let fakeText = Faker()
-	
-	var dummyArray: [[Message]] = []
-	
+	fileprivate var messages: [[Message]] = []
 	fileprivate let dummyItem = MessengerViewCell()
 	fileprivate let dummyHeader = SectionHeader()
-	fileprivate let rootFlexContainer = UIView()
+	fileprivate var lastContentOffset: CGFloat = 0.0
 
 	public lazy var stickyHeaderLayout = StickyHeaderLayout()
 	
@@ -26,6 +22,7 @@ open class MessengerView: UIView {
 		
 		let image = UIImage(named: "scrollToBottom")!
 		let button = UIButton()
+		button.addTarget(self, action: #selector(scrollToButtom), for: UIControl.Event.touchUpInside)
 		button.setImage(image, for: .normal)
 		return button
 	}()
@@ -51,32 +48,13 @@ open class MessengerView: UIView {
 	
 	public init() {
 		super.init(frame: CGRect.zero)
-		
-		var outer: [[Message]] = []
-		
-		for _ in 0..<Int.random(in: 1 ..< 20) {
-			
-			var inner: [Message] = []
-			for _ in 0..<Int.random(in: 1 ..< 100) {
-				let text = arc4random() % 2 == 0 ? fakeText.lorem.sentences() : fakeText.lorem.sentences()
-				let date = Date.random()
-				let isIncomming = fakeText.number.randomBool()
-				let message = Message.init(text: text, date: date, isIncomming: isIncomming)
-				inner.append(message)
-			}
-			
-			outer.append(inner)
-		}
-		
-		dummyArray = outer
-		addSubview(rootFlexContainer)
 		setupFlexLayout()
 	}
 	
-	public override init(frame: CGRect) {
-		super.init(frame: frame)
-
-		self.addSubview(collectionView)
+	func configure(messages: [[Message]] ) {
+		self.messages = messages
+		collectionView.reloadData()
+		setNeedsLayout()
 	}
 	
 	public required init?(coder aDecoder: NSCoder) {
@@ -86,43 +64,46 @@ open class MessengerView: UIView {
 	
 	open override func layoutSubviews() {
 		super.layoutSubviews()
-		layout()
+		collectionView.pin.all()
 	}
 	
 	private func setupFlexLayout() {
-		
-		rootFlexContainer.flex.define { (flex) in
-			
-			flex.addItem(collectionView).grow(1)
 
-			flex.addItem(scrollButton)
-				.position(.absolute).right(18).bottom(18).size(36)
+		flex.define { (container) in
 
+			container.addItem(collectionView)
+
+			container.addItem(scrollButton)
+				.position(.absolute)
+				.right(0)
+				.bottom(5)
+				.size(60)
 		}
 	}
 	
-	fileprivate func layout() {
-		self.backgroundColor = UIColor(red:19/255.0, green:26/255.0, blue:34/255.0, alpha: 1)
-		collectionView.pin.all()
-		
-		rootFlexContainer.pin.all()
-		rootFlexContainer.flex.layout()
+	func viewOrientationDidChange() {
+		stickyHeaderLayout.invalidateLayout()
+	}
+	
+	@objc fileprivate func scrollToButtom() {
+		collectionViewScrollToButtom(animation: true)
 	}
 }
 
 extension MessengerView: UICollectionViewDataSource {
 	
 	public func numberOfSections(in collectionView: UICollectionView) -> Int {
-		return dummyArray.count
+		return messages.count
 	}
 	
 	open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return dummyArray[section].count
+		return messages[section].count
 	}
 	
 	open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: MessengerViewCell.self), for: indexPath) as! MessengerViewCell
-		cell.setup(message: dummyArray[indexPath.section][indexPath.row])
+		let message = messages[indexPath.section][indexPath.row]
+		cell.setup(message: message)
 		return cell
 	}
 }
@@ -132,8 +113,8 @@ extension MessengerView: UICollectionViewDelegateFlowLayout {
 	public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 		
 		let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: String.init(describing: SectionHeader.self), for: indexPath) as! SectionHeader
-		headerView.setup(message: dummyArray[indexPath.section][indexPath.row])
-		headerView.titleLabel.textColor = .white
+		let message = messages[indexPath.section][indexPath.row]
+		headerView.setup(message: message)
 		return headerView
 	}
 	
@@ -143,24 +124,32 @@ extension MessengerView: UICollectionViewDelegateFlowLayout {
 	}
 	
 	open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-		dummyItem.setup(message: dummyArray[indexPath.section][indexPath.row])
-		let height: CGFloat = .greatestFiniteMagnitude
-		let width: CGFloat = collectionView.frame.width
-		let size = dummyItem.sizeThatFits(CGSize(width: width, height: height))
+		let message = messages[indexPath.section][indexPath.row].text + "____________"
+		let width = (frame.width * 0.8) - 36
+		let height = message.height(withConstrainedWidth: width, font: UIFont.systemFont(ofSize: 17)) + 16 + 2
+		let size = CGSize(width: frame.width, height: height)
 		return size
 	}
-	
+
 	open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-		return  0
+		return  2
 	}
 	
 	open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-		return  0
+		return  2
 	}
 }
 
 extension MessengerView: UIScrollViewDelegate {
+
+	public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+
+		let isReachingEnd = scrollView.contentOffset.y >= 0
+			&& scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height)
+
+		let isHidden = isReachingEnd ? true : false
+		scrollToBottom(isHidden: isHidden)
+	}
 	
 	public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
 		headerView(isHidden: false)
@@ -170,14 +159,59 @@ extension MessengerView: UIScrollViewDelegate {
 		headerView(isHidden: true)
 	}
 	
-	func headerView(isHidden: Bool) {
+	public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+		headerView(isHidden: !decelerate)
+	}
+	
+	fileprivate func headerView(isHidden: Bool) {
 		
 		let alpha: CGFloat = isHidden ? 0 : 1
-		if let elementKind = collectionView.visibleSupplementaryViews(ofKind: UICollectionView.elementKindSectionHeader).first {
-			let cell = elementKind as! SectionHeader
-			UIView.animate(withDuration: 0.25) {
-				cell.contentView.alpha = alpha
-			}
+		let duration: Double = isHidden ? 0.25 : 0.10
+		let delay: Double = 0.15
+		let indexPaths = collectionView.indexPathsForVisibleSupplementaryElements(ofKind: UICollectionView.elementKindSectionHeader)
+			
+		if let indexPath = indexPaths.sorted().first {
+			
+			let cell = collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionHeader, at: indexPath) as! SectionHeader
+			UIView.animate(withDuration: duration, delay: delay, animations: {
+				cell.titleLabel.alpha = alpha
+			}, completion: nil)
 		}
+	}
+
+	fileprivate func scrollToBottom(isHidden: Bool) {
+
+		let alpha: CGFloat = isHidden ? 0 : 1
+		let duration: Double = isHidden ? 0.25 : 0.10
+		let delay: Double = 0.15
+
+		UIView.animate(withDuration: duration, delay: delay, animations: {
+			self.scrollButton.alpha = alpha
+		}, completion: nil)
+	}
+
+	fileprivate func collectionViewScrollToButtom(animation: Bool) {
+
+		guard collectionView.numberOfSections > 0 else { return }
+		let lastSection = collectionView.numberOfSections - 1
+		guard collectionView.numberOfItems(inSection: lastSection) > 0 else { return }
+		let lastItemIndexPath = IndexPath(item: collectionView.numberOfItems(inSection: lastSection) - 1, section: lastSection)
+		collectionView.scrollToItem(at: lastItemIndexPath, at: .bottom, animated: animation)
+	}
+}
+
+extension String {
+	func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
+		let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+		let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
+
+		return ceil(boundingBox.height)
+	}
+
+	func width(withConstrainedHeight height: CGFloat, font: UIFont) -> CGFloat {
+		let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
+		let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
+
+		return ceil(boundingBox.width)
 	}
 }
